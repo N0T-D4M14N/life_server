@@ -13,12 +13,12 @@ _queryResult = [_query,2,true] call DB_fnc_asyncCall;
 
 if (_queryResult isEqualTo []) exitWith {};
 
+private _price = 0;
 private _countVehicles = 0;
 private _maxCountVehicles = LIFE_SETTINGS(getNumber,"max_saved_vehicles");
-private _maxRespawnTime = LIFE_SETTINGS(getNumber, "max_time_restartspawn");
+private _maxRespawnTime = LIFE_SETTINGS(getNumber,"max_time_restartspawn");
 
 {
-private _price = 0;
 private _position = _x#2;
 _position = parseSimpleArray _position;
 
@@ -26,7 +26,7 @@ if (serverTime > _maxRespawnTime) then {
     private _vehicle = [_x#2, 0, "[[],0]", "[]", _x#3, 0, 0, _x#3, 1];
     [_vehicle] remoteExecCall ["TON_fnc_updateVehicle",2];
 } else {
-    [_x#0,_x#1,_position,_unit,_price,_x#3,"Dein Fahrzeug steht jetzt wieder bereit!"] remoteExec ["TON_fnc_spawnVehicle",2];
+    [_x#0,_x#1,_position,_unit,_price,_x#3,"Dein Fahrzeug steht jetzt wieder bereit!"] remoteExecCall ["TON_fnc_spawnVehicle",2];
 };
 
 _countVehicles = _countVehicles +1;

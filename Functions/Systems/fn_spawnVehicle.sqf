@@ -66,8 +66,14 @@ if !(_sp isEqualType "") then {
 
 if (count _nearVehicles > 0) exitWith {
     serv_sv_use deleteAt _servIndex;
-    [_price,_unit_return] remoteExecCall ["life_fnc_garageRefund",_unit];
-    [1,"STR_Garage_SpawnPointError",true] remoteExecCall ["life_fnc_broadcast",_unit];
+    if (_vInfo#6 isEqualTo 2) then {
+        _query = format ["UPDATE vehicles SET active='0' WHERE pid='%1' AND id='%2'",_pid,_vid];
+        [_query,1] call DB_fnc_asyncCall;
+        [1,"Dein Fahrzeug wurde in die Garage gestellt, da der Spawnpoint besetzt war.",true] remoteExecCall ["life_fnc_broadcast",_unit];
+    } else {
+        [_price,_unit_return] remoteExecCall ["life_fnc_garageRefund",_unit];
+        [1,"STR_Garage_SpawnPointError",true] remoteExecCall ["life_fnc_broadcast",_unit];
+    };
 };
 
 _query = format ["UPDATE vehicles SET active='1', damage='""[]""' WHERE pid='%1' AND id='%2'",_pid,_vid];
