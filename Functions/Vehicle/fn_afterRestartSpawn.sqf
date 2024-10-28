@@ -11,7 +11,7 @@ private _pID = getPlayerUID _unit;
 _query = format ["SELECT id,pid,position,rotation FROM vehicles WHERE active='2' AND pid='%1'",_pID];
 _queryResult = [_query,2,true] call DB_fnc_asyncCall;
 
-if (_queryResult isEqualTo []) exitWith {diag_log "[INFO] Es wurde kein Fahrzeug gespeichert vor dem Restart."};
+if (_queryResult isEqualTo []) exitWith {};
 
 private _countVehicles = 0;
 private _maxCountVehicles = LIFE_SETTINGS(getNumber,"max_saved_vehicles");

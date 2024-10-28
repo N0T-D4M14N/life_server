@@ -10,19 +10,16 @@ switch (_reason) do {
     case 0: {
         private _query = format ["UPDATE vehicles SET active='2', inventory='%3', gear='%4', position='%5', damage='%6', fuel='%7', rotation='%8' WHERE pid='%1' AND plate='%2'",_pID,_plate,_vItems,_iItems,_position,_damage,_fuel,_rotation];
         [_query,1] call DB_fnc_asyncCall;
-        diag_log "[INFO] Saved vehicle during restart";
     };
 
     case 1: {
         private _query = format ["UPDATE vehicles SET active='0', inventory='%2', gear='%3' WHERE active='2' AND pid='%1'",_pID,_vItems,iItems];
         [_query,1] call DB_fnc_asyncCall;
-        diag_log "[INFO] Moved vehicle back to the garage";
     };
 
     case 2: {
         private _query = format ["UPDATE vehicles SET active='1' WHERE active='2' AND pid='%1' AND plate='%2'",_pID,_plate];
         [_query,1] call DB_fnc_asyncCall;
-        diag_log "[INFO] Either the player unsaved or spawned the car after the restart";
     };
 
     default {
