@@ -132,7 +132,7 @@ class CfgFunctions {
 
         class crypto {
             file = "\life_server\Functions\Crypto"
-            class cryptoPriceLog {};
+            //class cryptoPriceLog {};
             class cryptoPriceFetch {};
         };
     };
