@@ -129,12 +129,6 @@ class CfgFunctions {
             class handleShots {};
             class updateVehicle {};
         };
-
-        class crypto {
-            file = "\life_server\Functions\Crypto"
-            //class cryptoPriceLog {};
-            class cryptoPriceFetch {};
-        };
     };
 };
 
