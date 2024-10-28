@@ -1,7 +1,7 @@
 #include "\life_server\script_macros.hpp"
 /*
     File: fn_afterRestartSpawn.sqf
-    Author: damian.
+    Author: damian
     Description: checks for player and spawns vehicle
 */
 _this#0 params ["_unit"];
@@ -15,13 +15,14 @@ if (_queryResult isEqualTo []) exitWith {};
 
 private _countVehicles = 0;
 private _maxCountVehicles = LIFE_SETTINGS(getNumber,"max_saved_vehicles");
+private _maxRespawnTime = LIFE_SETTINGS(getNumber, "max_time_restartspawn");
 
 {
-private _price = 0; //test for available numbers
+private _price = 0;
 private _position = _x#2;
-_position = parseSimpleArray _position;//cleaneren Weg finden
+_position = parseSimpleArray _position;
 
-if (serverTime > 900) then {
+if (serverTime > _maxRespawnTime) then {
     private _vehicle = [_x#2, 0, "[[],0]", "[]", _x#3, 0, 0, _x#3, 1];
     [_vehicle] remoteExecCall ["TON_fnc_updateVehicle",2];
 } else {

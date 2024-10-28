@@ -1,7 +1,7 @@
 #include "\life_server\script_macros.hpp"
 /*
     File: fn_handleShots.sqf
-    Author: damian.
+    Author: damian
 
 */
 

@@ -1,7 +1,7 @@
 #include "\life_server\script_macros.hpp"
 /*
     File: fn_druglabFill.sqf
-    Author: damian...
+    Author: damian
 
 */
 
@@ -33,4 +33,4 @@ private _trunk = [[],0];
 
 } forEach _lootTable;
 
-rl_dl_vault setVariable ["Trunk",_trunk,true]; //put Items in Trunk
+rl_dl_vault setVariable ["Trunk",_trunk,true];

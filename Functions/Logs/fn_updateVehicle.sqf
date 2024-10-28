@@ -13,7 +13,7 @@ switch (_reason) do {
     };
 
     case 1: {
-        private _query = format ["UPDATE vehicles SET active='0', inventory='%2', gear='%3' WHERE active='2' AND pid='%1'",_pID,_vItems,iItems];
+        private _query = format ["UPDATE vehicles SET active='0', inventory='%2', gear='%3' WHERE active='2' AND pid='%1'",_pID,_vItems,_iItems];
         [_query,1] call DB_fnc_asyncCall;
     };
 
