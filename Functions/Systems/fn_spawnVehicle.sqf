@@ -7,9 +7,6 @@
     Sends the query request to the database, if an array is returned then it creates
     the vehicle if it's not in use or dead.
 */
-diag_log "[INFO] this spawnVehicle:";//remove
-diag_log _this;//remove
-
 params [
     ["_vid", -1, [0]],
     ["_pid", "", [""]],
@@ -43,9 +40,6 @@ if (EXTDB_SETTING(getNumber,"DebugMode") isEqualTo 1) then {
     diag_log format ["Result: %1",_queryResult];
     diag_log "------------------------------------------------";
 };
-
-diag_log "[INFO] Query spawnVehicle";//remove
-diag_log _queryResult;//remove
 
 if (_queryResult isEqualType "") exitWith {};
 

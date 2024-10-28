@@ -13,9 +13,6 @@ _queryResult = [_query,2,true] call DB_fnc_asyncCall;
 
 if (_queryResult isEqualTo []) exitWith {diag_log "[INFO] Es wurde kein Fahrzeug gespeichert vor dem Restart."};
 
-diag_log "[INFO] QueryResult afterRestartSpawn";//remove
-diag_log _queryResult;//remove
-
 private _countVehicles = 0;
 private _maxCountVehicles = LIFE_SETTINGS(getNumber,"max_saved_vehicles");
 
@@ -36,8 +33,3 @@ _countVehicles = _countVehicles +1;
 if (_countVehicles isEqualTo _maxCountVehicles) exitWith {diag_log "Spawned Vehicles"};
 
 } forEach _queryResult;
-
-/* 
-queryResult = [[1,"76561198350215456","""[3744.85,13272.5,-0.050087]""","52.0214"]]//remove
-vehicle = [1,"76561198350215456","""[3744.85,13272.5,-0.050087]""","52.0214"]//remove
-*/
