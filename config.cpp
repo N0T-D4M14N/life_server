@@ -88,6 +88,7 @@ class CfgFunctions {
         class Vehicle {
             file ="\life_server\Functions\Vehicle";
             class afterRestartSpawn {};
+            class rsCleanup {};
         };
 
         class Housing {
